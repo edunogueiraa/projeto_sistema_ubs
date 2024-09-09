@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicoController;
+<<<<<<< HEAD
 use App\Http\Controllers\PacienteController;
+=======
+use App\Http\Controllers\NoticeController;
+>>>>>>> b3e804481aa2832ba667993071584dbce1084623
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::get('/medicos', [MedicoController::class, 'index'])->name('medicos.index');
 Route::get('/medicos/create', [MedicoController::class, 'create'])->name('medicos.create');
 Route::post('/medicos', [MedicoController::class, 'store'])->name('medicos.store');
@@ -37,6 +42,18 @@ Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medico
 Route::get('/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
 Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
 Route::delete('/medicos/{medico}', [MedicoController::class, 'destroy'])->name('medicos.destroy');
+Route::get('/', function () {
+    // return view('welcome');
+    return redirect('/notices');
+});
+
+Route::get('/recepcionistas', [RecepcionistaController::class, 'index'])->name('recepcionistas.index');
+Route::get('/recepcionistas/create', [RecepcionistaController::class, 'create'])->name('recepcionistas.create');
+Route::post('/recepcionistas', [RecepcionistaController::class, 'store'])->name('recepcionistas.store');
+Route::get('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'show'])->name('recepcionistas.show');
+Route::get('/recepcionistas/{recepcionista}/edit', [RecepcionistaController::class, 'edit'])->name('recepcionistas.edit');
+Route::put('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'update'])->name('recepcionistas.update');
+Route::delete('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'destroy'])->name('recepcionistas.destroy');
 
 Route::get('/pacientes', [PacienteController::class, 'index'])->name('pacientes.index');
 Route::get('/pacientes/create', [PacienteController::class, 'create'])->name('pacientes.create');
