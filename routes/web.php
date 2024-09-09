@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\MedicoController;
+=======
+use App\Http\Controllers\NoticeController;
+>>>>>>> 92ea51cf52ebb43eb4436b16c46c42ab0997f364
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
 Route::get('/medicos', [MedicoController::class, 'index'])->name('medicos.index');
 Route::get('/medicos/create', [MedicoController::class, 'create'])->name('medicos.create');
 Route::post('/medicos', [MedicoController::class, 'store'])->name('medicos.store');
@@ -36,5 +41,19 @@ Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medico
 Route::get('/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
 Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
 Route::delete('/medicos/{medico}', [MedicoController::class, 'destroy'])->name('medicos.destroy');
+=======
+Route::get('/', function () {
+    // return view('welcome');
+    return redirect('/notices');
+});
+
+Route::get('/recepcionistas', [RecepcionistaController::class, 'index'])->name('recepcionistas.index');
+Route::get('/recepcionistas/create', [RecepcionistaController::class, 'create'])->name('recepcionistas.create');
+Route::post('/recepcionistas', [RecepcionistaController::class, 'store'])->name('recepcionistas.store');
+Route::get('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'show'])->name('recepcionistas.show');
+Route::get('/recepcionistas/{recepcionista}/edit', [RecepcionistaController::class, 'edit'])->name('recepcionistas.edit');
+Route::put('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'update'])->name('recepcionistas.update');
+Route::delete('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'destroy'])->name('recepcionistas.destroy');
+>>>>>>> 92ea51cf52ebb43eb4436b16c46c42ab0997f364
 
 require __DIR__.'/auth.php';

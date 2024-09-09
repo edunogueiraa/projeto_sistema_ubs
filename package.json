@@ -3,15 +3,27 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+<<<<<<< HEAD
         "build": "vite build"
+=======
+        "build": "vite build",
+        "vite": "vite"
+>>>>>>> 92ea51cf52ebb43eb4436b16c46c42ab0997f364
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.20",
         "axios": "^1.6.1",
+<<<<<<< HEAD
         "laravel-vite-plugin": "^1.0.0",
         "vite": "^5.0.0"
+=======
+        "laravel-vite-plugin": "^1.0",
+        "postcss":"^8.4.31",
+        "tailwindcss": "3.1.0",
+        "vite": "^5.0"
+>>>>>>> 92ea51cf52ebb43eb4436b16c46c42ab0997f364
     },
     "dependencies": {
         "bootstrap": "^5.3.3"
