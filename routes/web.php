@@ -1,11 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\MedicoController;
-
 use App\Http\Controllers\NoticeController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +38,6 @@ Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medico
 Route::get('/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
 Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
 Route::delete('/medicos/{medico}', [MedicoController::class, 'destroy'])->name('medicos.destroy');
-
 Route::get('/', function () {
     // return view('welcome');
     return redirect('/notices');
@@ -54,6 +50,5 @@ Route::get('/recepcionistas/{recepcionista}', [RecepcionistaController::class, '
 Route::get('/recepcionistas/{recepcionista}/edit', [RecepcionistaController::class, 'edit'])->name('recepcionistas.edit');
 Route::put('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'update'])->name('recepcionistas.update');
 Route::delete('/recepcionistas/{recepcionista}', [RecepcionistaController::class, 'destroy'])->name('recepcionistas.destroy');
-
 
 require __DIR__.'/auth.php';
