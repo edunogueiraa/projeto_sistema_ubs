@@ -1,8 +1,7 @@
 <form action="{{url('/pacientes')}}" method="POST">
 
     @csrf
-    <h1>Cadastro de Paciente</h1>
-    <p>Preencha o formulário abaixo para realizar o cadastro</p>
+    <h1>CADASTRE-SE</h1>
     
     <div class="input-single">
         <label for="name">Nome</label>
