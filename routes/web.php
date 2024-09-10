@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MedicoController;
-<<<<<<< HEAD
 use App\Http\Controllers\PacienteController;
-=======
-use App\Http\Controllers\NoticeController;
->>>>>>> b3e804481aa2832ba667993071584dbce1084623
+// use App\Http\Controllers\NoticeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecepcionistaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +61,4 @@ Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->n
 Route::put('/pacientes/{paciente}', [PacienteController::class, 'update'])->name('pacientes.update');
 Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
