@@ -9,13 +9,13 @@ class Paciente extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_paciente'; 
-    protected $primaryKey = 'pac_id'; 
+    protected $table = 'pacientes'; 
+    protected $primaryKey = 'id'; 
     public $timestamps = false; 
 
     protected $fillable = [
-        'pac_id', 'pac_nome', 'pac_nascimento', 'pac_telefone',
-        'pac_endereco', 'pac_sexo', 'pac_cpf'
+        'id', 'nome', 'nascimento', 'telefone',
+        'endereco', 'sexo', 'cpf'
     ];
 
 }

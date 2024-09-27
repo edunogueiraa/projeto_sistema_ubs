@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_medico', function (Blueprint $table) {
-            $table->integer('med_cm')->primary();
-            $table->string('med_nome', 100);
-            $table->date('med_nascimento');
-            $table->string('med_email', 100);
-            $table->string('med_endereco', 100);
-            $table->string('med_status', 100);
-            $table->string('med_formacao', 100);
-            $table->date('med_contratacao');
+        Schema::create('medicos', function (Blueprint $table) {
+            $table->integer('cm')->primary();
+            $table->string('nome', 100);
+            $table->date('nascimento');
+            $table->string('email', 100);
+            $table->string('endereco', 100);
+            $table->string('status', 100);
+            $table->string('formacao', 100);
+            $table->date('contratacao');
             $table->timestamps();
         });
     }
