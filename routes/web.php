@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
-// use App\Http\Controllers\NoticeController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\RecepcionistaController;
 
 /*
@@ -39,6 +39,10 @@ Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medico
 Route::get('/medicos/{medico}/edit', [MedicoController::class, 'edit'])->name('medicos.edit');
 Route::put('/medicos/{medico}', [MedicoController::class, 'update'])->name('medicos.update');
 Route::delete('/medicos/{medico}', [MedicoController::class, 'destroy'])->name('medicos.destroy');
+Route::get('/notices', function () {
+    // return view('welcome');
+    return redirect('/notices');
+});
 
 Route::get('/recepcionistas', [RecepcionistaController::class, 'index'])->name('recepcionistas.index');
 Route::get('/recepcionistas/create', [RecepcionistaController::class, 'create'])->name('recepcionistas.create');
@@ -56,4 +60,5 @@ Route::get('/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->n
 Route::put('/pacientes/{paciente}', [PacienteController::class, 'update'])->name('pacientes.update');
 Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
 
-require __DIR__ . '/auth.php';
+
+require __DIR__.'/auth.php';
