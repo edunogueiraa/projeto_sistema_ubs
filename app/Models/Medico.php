@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Medico extends Model
 {
+    use HasFactory;
+
     protected $table = 'medicos';
     protected $primaryKey = 'cm';
     public $timestamps = false;
 
     protected $fillable = [
-        'cm', 'nome', 'nascimento', 'email',
+        'cm', 'nome', 'nascimento', 'email', 'password', 
         'endereco', 'status', 'formacao', 'contratacao'
     ];
 }

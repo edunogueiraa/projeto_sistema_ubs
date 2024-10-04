@@ -2,69 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recepcionista;
 use Illuminate\Http\Request;
 
 class RecepcionistaController extends Controller
 {
-    public function index() : View
-    {
+    public function create(){
+        return view('recepcionistas.cadastro');
+    }
+
+    public function store(Request $request){
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:100|unique:recepcionistas,nome',
+            'password' => 'required|string|min:6',
+        ]);
+
+        Recepcionista::create($validatedData);
+
+        return redirect()->route('recepcionistas.dashboard')->with('success', 'Recepcionista cadastrado com sucesso!');
+    }
+
+    public function login(){
+        return view('recepcionistas.login');
+    }
+
+    public function authenticate(Request $request){
+        $request->validate([
+            'nome' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        // Verifica se o recepcionista existe com os dados fornecidos
+        $recepcionista = Recepcionista::where('nome', $request->nome)->where('password', $request->password)->first();
+
+        if ($recepcionista) {
+            session(['recepcionista' => $recepcionista]);
+            return redirect()->route('recepcionistas.dashboard')->with('success', 'Login realizado com sucesso!');
+        }
+
+        return back()->withErrors(['login' => 'Nome ou senha incorretos.']);
+    }
+
+    public function dashboard(){
+        if (!session()->has('recepcionista')) {
+            return redirect()->route('recepcionistas.login')->with('error', 'Você precisa estar logado para acessar o dashboard.');
+        }
+
         $recepcionistas = Recepcionista::all();
-        return view('recepcionistas.index', compact('recepcionistas'));
+        return view('recepcionistas.dashboard', compact('recepcionistas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create() : View
-    {
-        return view('recepcionistas.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRecepcionistaRequest $request) : RedirectResponse
-    {
-        Notice::create($request->validated());
-
-        return redirect()->route('notices.index')
-                ->withSuccess('New notice is added successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Recepcionista $recepcionista) : View
-    {
-        return view('recepcionistas.show', compact('recepcionista'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Recepcionista $recepcionista) : View
-    {
-        return view('recepcionistas.edit', compact('recepcionista'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRecepcionistaRequest $request, Recepcionista $recepcionista) : RedirectResponse
-    {
-        $recepcionista->update($request->validated());
-
-        return redirect()->back()
-                ->withSuccess('Recepcionista atualizado');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Recepcionista $recepcionista) : RedirectResponse
-    {
-        $recepcionista->delete();
-
-        return redirect()->route('$recepcionistas.index');
-    }
 }
